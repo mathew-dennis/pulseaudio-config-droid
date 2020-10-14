@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+
+configure() {
+	# Divert Calls daemon config
+	if ! [ -e "/etc/pulse/default.pa" ]; then
+		dpkg-divert --rename --package meta-base --divert "/usr/lib/pulseaudio-config-droid/default.pa.debian" --add "/etc/pulse/default.pa"
+		ln -s "/usr/lib/pulseaudio-config-droid/default.pa.droid" "/etc/pulse/default.pa"
+	fi
+
+}
+
+case "$1" in
+	"configure")
+		configure
+		;;
+esac
