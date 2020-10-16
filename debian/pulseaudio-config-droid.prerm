@@ -6,7 +6,7 @@ remove() {
 	# Restore Calls daemon config
 	if [ -e "/etc/pulse/default.pa" ]; then
 		rm -f "/etc/pulse/default.pa"
-		dpkg-divert --rename --package meta-base --divert "/usr/lib/pulseaudio-config-droid/default.pa.debian" --remove "/etc/pulse/default.pa"
+		dpkg-divert --rename --package pulseaudio-config-droid --divert "/usr/lib/pulseaudio-config-droid/default.pa.debian" --remove "/etc/pulse/default.pa"
 	fi
 }
 
