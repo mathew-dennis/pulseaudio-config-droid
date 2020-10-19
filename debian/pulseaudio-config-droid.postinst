@@ -3,7 +3,7 @@ set -e
 
 configure() {
 	# Divert Calls daemon config
-	if ! [ -e "/etc/pulse/default.pa" ]; then
+	if ! [ -e "/usr/lib/pulseaudio-config-droid/default.pa.debian" ]; then
 		dpkg-divert --rename --package pulseaudio-config-droid --divert "/usr/lib/pulseaudio-config-droid/default.pa.debian" --add "/etc/pulse/default.pa"
 		ln -s "/usr/lib/pulseaudio-config-droid/default.pa.droid" "/etc/pulse/default.pa"
 	fi

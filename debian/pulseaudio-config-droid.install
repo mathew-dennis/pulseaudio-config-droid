@@ -1,2 +1,2 @@
-pulse/default.pa.droid /usr/lib/pulseaudio-config-droid/default.pa.droid
-pulse/touch-stream-restore.table /etc/pulse/touch-stream-restore.table
+pulse/default.pa.droid /usr/lib/pulseaudio-config-droid/
+pulse/touch-stream-restore.table /etc/pulse/
