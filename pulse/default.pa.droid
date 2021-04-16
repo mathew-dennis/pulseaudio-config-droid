@@ -37,9 +37,14 @@ load-module module-switch-on-port-available
 ### Switch when connected by default
 #load-module module-switch-on-connect skip_abstract=yes
 
-### Automatically load the Pulseaudio Droid
+### Automatically load the Pulseaudio Droid and check for custom config file
 .ifexists module-droid-card.so
 load-module module-droid-card rate=48000 voice_virtual_stream=true
+.endif
+
+.ifexists /etc/pulse/arm_droid_card_custom.pa
+unload-module module-droid-card
+.include /etc/pulse/arm_droid_card_custom.pa
 .endif
 
 .ifexists module-droid-hidl.so
@@ -68,13 +73,13 @@ load-module module-jackdbus-detect channels=2
 .endif
 
 ### Automatically load driver modules for Bluetooth hardware
-#.ifexists module-bluetooth-policy.so
-#load-module module-bluetooth-policy
-#.endif
+.ifexists module-bluetooth-policy.so
+load-module module-bluetooth-policy
+.endif
 
-#.ifexists module-bluez5-discover.so
-#load-module module-bluez5-discover headset=both profile=a2dp_sink sco_sink=sink.fake.sco sco_source=source.fake.sco
-#.endif
+.ifexists module-bluetooth-discover.so
+load-module module-bluetooth-discover
+.endif
 
 ### Load several protocols
 .ifexists module-esound-protocol-unix.so
@@ -153,5 +158,4 @@ load-module module-filter-apply
 ### Make some devices default
 #set-default-sink sink.primary
 #set-default-source source.primary
-
 
