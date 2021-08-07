@@ -85,7 +85,12 @@ load-module module-bluetooth-discover
 .ifexists module-esound-protocol-unix.so
 load-module module-esound-protocol-unix
 .endif
+
+.ifexists /var/lib/lxc/waydroid/config
+load-module module-native-protocol-unix auth-anonymous=1
+.else
 load-module module-native-protocol-unix
+.endif
 
 ### Network access (may be configured with paprefs, so leave this commented
 ### here if you plan to use paprefs)
