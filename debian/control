@@ -9,7 +9,7 @@ Vcs-Git: https://github.com/hybris-mobian-releng/pulseaudio-config-droid.git
 
 Package: pulseaudio-config-droid
 Architecture: all
-Pre-Depends: pulseaudio-modules-droid, pulseaudio
+Pre-Depends: pulseaudio-modules-droid-apispecific, pulseaudio
 Depends: ${misc:Depends}
 Description: pulseaudio configs for hybris devices
  This package contains pulseaudio configuration files for hybris-based adaptations
