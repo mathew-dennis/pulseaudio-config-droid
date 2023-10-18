@@ -4,8 +4,8 @@ Section: misc
 Priority: optional
 Build-Depends: debhelper (>= 10)
 Standards-Version: 4.5.0.3
-Vcs-Browser: https://github.com/hybris-mobian/pulseaudio-config-droid
-Vcs-Git: https://github.com/hybris-mobian-releng/pulseaudio-config-droid.git
+Vcs-Browser: https://github.com/droidian/pulseaudio-config-droid
+Vcs-Git: https://github.com/droidian/pulseaudio-config-droid.git
 
 Package: pulseaudio-config-droid
 Architecture: all
