@@ -27,6 +27,15 @@
 ### Automatically restore the volume of streams
 load-module module-stream-restore restore_device=false restore_muted=false fallback_table=/etc/pulse/touch-stream-restore.table
 
+### Automatically restore the volume of devices
+load-module module-device-restore
+
+### Automatically restore the default sink/source when changed by the user
+### during runtime
+### NOTE: This should be loaded as early as possible so that subsequent modules
+### that look up the default sink/source get the right value
+load-module module-default-device-restore
+
 ### Automatically augment property information from .desktop files
 ### stored in /usr/share/application
 load-module module-augment-properties
@@ -109,16 +118,6 @@ load-module module-gconf
 .fail
 .endif
 
-### Automatically restore the default sink/source when changed by the user
-### during runtime
-### NOTE: This should be loaded as early as possible so that subsequent modules
-### that look up the default sink/source get the right value
-load-module module-default-device-restore
-
-### Automatically move streams to the default sink if the sink they are
-### connected to dies, similar for sources
-load-module module-rescue-streams
-
 ### Make sure we always have a sink around, even if it is a null sink.
 load-module module-always-sink
 
@@ -158,4 +157,3 @@ load-module module-filter-apply
 ### Make some devices default
 #set-default-sink sink.primary
 #set-default-source source.primary
-
