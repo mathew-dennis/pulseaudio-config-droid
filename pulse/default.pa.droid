@@ -37,14 +37,11 @@ load-module module-switch-on-port-available
 ### Switch when connected by default
 #load-module module-switch-on-connect skip_abstract=yes
 
-### Automatically load the Pulseaudio Droid and check for custom config file
-.ifexists module-droid-card.so
-load-module module-droid-card rate=48000 voice_virtual_stream=true
-.endif
-
+### Automatically check for custom config file and load the Pulseaudio Droid
 .ifexists /etc/pulse/arm_droid_card_custom.pa
-unload-module module-droid-card
 .include /etc/pulse/arm_droid_card_custom.pa
+.else
+load-module module-droid-card rate=48000 voice_virtual_stream=true
 .endif
 
 .ifexists module-droid-hidl.so
@@ -158,4 +155,3 @@ load-module module-filter-apply
 ### Make some devices default
 #set-default-sink sink.primary
 #set-default-source source.primary
-
